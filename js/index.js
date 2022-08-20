@@ -1,14 +1,32 @@
-document.addEventListener("DOMContentLoaded", function(){
-    document.getElementById("autos").addEventListener("click", function() {
-        localStorage.setItem("catID", 101);
-        window.location = "products.html"
-    });
-    document.getElementById("juguetes").addEventListener("click", function() {
-        localStorage.setItem("catID", 102);
-        window.location = "products.html"
-    });
-    document.getElementById("muebles").addEventListener("click", function() {
-        localStorage.setItem("catID", 103);
-        window.location = "products.html"
-    });
-});
+
+const boton_inicio = document.getElementById("btninicio");
+
+function alertWarning(){
+
+
+    document.getElementById("alertred").style.visibility = 'visible';
+    setTimeout(hideWarning,3000);
+}
+
+function hideWarning(){
+    document.getElementById("alertred").style.visibility = 'hidden';
+}
+
+/* evento click Ingresar */
+boton_inicio.addEventListener("click",cambiarPag);
+function cambiarPag(){
+    let email = document.getElementById("floatingInput").value
+    let paswo = document.getElementById("floatingPassword").value
+    let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    if(paswo.length != 0 && email.length != 0 && email.match(validRegex)){
+        location.href = "portada.html";
+        console.log("hola")
+    }else{ alertWarning();
+    };
+    
+
+}
+
+function loginGoogle(){
+    location.href = "portada.html";
+}
