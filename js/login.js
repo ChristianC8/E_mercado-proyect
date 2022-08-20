@@ -19,7 +19,7 @@ function cambiarPag(){
     let paswo = document.getElementById("floatingPassword").value
     let validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     if(paswo.length != 0 && email.length != 0 && email.match(validRegex)){
-        location.href = "index.html";
+        location.href = "portada.html";
         console.log("hola")
     }else{ alertWarning();
     };
@@ -27,3 +27,6 @@ function cambiarPag(){
 
 }
 
+function loginGoogle(){
+    location.href = "portada.html";
+}
