@@ -1,4 +1,4 @@
-const LIST_URL = "https://japceibal.github.io/emercado-api/cats_products/101.json";
+const LIST_URL = `https://japceibal.github.io/emercado-api/cats_products/`+JSON.parse(localStorage.getItem("catID"))+`.json`;
 
 
 function capturaElJson(url){
