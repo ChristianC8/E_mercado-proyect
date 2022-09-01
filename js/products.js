@@ -31,7 +31,6 @@ let categoriesArray = [];
 
 
 
-
 function showCategoriesList(array){
     let htmlContentToAppend = "";
 
@@ -114,3 +113,34 @@ function limpiar(price2){
     }else{contadorL++}
 
 }}
+let arrays = []
+
+
+document.getElementById("sortAsc").addEventListener("click",function(){
+categoriesArray.products.sort((a, b) => {
+    return a.cost - b.cost;
+});
+categoriesArray.products.forEach((e) => {
+    showCategoriesList(categoriesArray.products)
+}); 
+
+}) 
+
+document.getElementById("sortDesc").addEventListener("click",function(){
+    categoriesArray.products.sort((a, b) => {
+        return b.cost - a.cost ;
+    });
+    categoriesArray.products.forEach((e) => {
+        showCategoriesList(categoriesArray.products)
+    });
+})
+
+document.getElementById("sortByCount").addEventListener("click",function(){
+    categoriesArray.products.sort((a, b) => {
+        return b.soldCount - a.soldCount ;
+    });
+    categoriesArray.products.forEach((e) => {
+        showCategoriesList(categoriesArray.products)
+    });
+})
+
