@@ -39,7 +39,7 @@ function showCategoriesList(array){
         let category = array[i];
 
         htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action">
+        <div class="list-group-item list-group-item-action" id="item`+i+`">
             <div class="row">
                 <div class="col-3">
                     <img src="` + category.image + `" alt="product image" class="img-thumbnail">
@@ -71,14 +71,46 @@ document.addEventListener("DOMContentLoaded", function(){
 
             categoriesArray = resultObj.data;
             showCategoriesList(categoriesArray.products);
-
         }
     });
 });
 
 
 
+/* filtros */
 
 
+document.getElementById("rangeFilterCount").addEventListener("click",function(){
+    categoriesArray.products.filter(checkPrice)
+})
+var contadorP = 0;
+function checkPrice(price){
+    
+    let rangeFilterCountMin = document.getElementById("rangeFilterCountMin").value;
+    let rangeFilterCountMax = document.getElementById("rangeFilterCountMax").value;
 
+    if (price.cost >= rangeFilterCountMin && price.cost <= rangeFilterCountMax){
+        if (contadorP == categoriesArray.products.length -1){
+            contadorP = 0
+        }else{contadorP++}
+    } else{
+        document.getElementById(`item`+contadorP+``).style.display = "none";
+        if (contadorP == categoriesArray.products.length -1){
+            contadorP = 0
+        }else{contadorP++}
+        } 
 
+}
+
+document.getElementById("clearRangeFilter").addEventListener("click",function(){
+    categoriesArray.products.forEach(limpiar)
+})
+let contadorL = 0;
+function limpiar(price2){
+    if (price2){
+    document.getElementById(`item`+contadorL+``).style.display = "block";
+    if (contadorL == categoriesArray.products.length -1){
+        contadorL = 0
+    }else{contadorL++}
+
+}}
