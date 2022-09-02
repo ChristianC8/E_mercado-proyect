@@ -196,3 +196,7 @@ a.custom-card:hover {
   padding: 15px;
   margin: auto;
 }
+
+#searchProduct{
+  margin-right: 4px;
+}

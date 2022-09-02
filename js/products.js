@@ -144,3 +144,34 @@ document.getElementById("sortByCount").addEventListener("click",function(){
     });
 })
 
+/* searcher */
+
+let search = document.getElementById("searchProduct")
+var contadorH = 0;
+
+
+
+
+search.addEventListener("input",function(){
+    let escriboSearch = search.value
+    console.log(escriboSearch)
+    let searchVal =document.getElementById("searchProduct").value;
+
+    categoriesArray.products.filter(function(producto, index){
+
+        let resultado = producto.name.toLowerCase().includes(searchVal.toLowerCase())
+
+        if(resultado){
+            esVisible();
+        }else(noEsVisible())
+
+        function esVisible(){
+            document.getElementById(`item`+index+``).style.display = "block"
+    }
+        function noEsVisible(){
+            document.getElementById(`item`+index+``).style.display = "none"
+    }
+
+    })
+})
+
