@@ -113,7 +113,7 @@ function limpiar(price2){
     }else{contadorL++}
 
 }}
-let arrays = []
+
 
 
 document.getElementById("sortAsc").addEventListener("click",function(){
@@ -147,14 +147,13 @@ document.getElementById("sortByCount").addEventListener("click",function(){
 /* searcher */
 
 let search = document.getElementById("searchProduct")
-var contadorH = 0;
+
 
 
 
 
 search.addEventListener("input",function(){
-    let escriboSearch = search.value
-    console.log(escriboSearch)
+
     let searchVal =document.getElementById("searchProduct").value;
 
     categoriesArray.products.filter(function(producto, index){
