@@ -28,7 +28,7 @@ function capturaElJson(url){
 let categoriesArray = [];
 
 
-
+/* var itemArray = [] */
 
 
 function showCategoriesList(array){
@@ -36,9 +36,9 @@ function showCategoriesList(array){
 
     for(let i = 0; i < array.length; i++){ 
         let category = array[i];
-
+console.log(array)
         htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action" id="item`+i+`">
+        <div class="list-group-item list-group-item-action" id="item`+i+`" onclick="saveDato(`+i+`,`+array[i].id+`)">
             <div class="row">
                 <div class="col-3">
                     <img src="` + category.image + `" alt="product image" class="img-thumbnail">
@@ -57,8 +57,22 @@ function showCategoriesList(array){
         </div>
         `
         document.getElementById("cat-list-container").innerHTML = htmlContentToAppend; 
+
+
+
     }
 }
+
+
+function saveDato(id,spID){
+    localStorage.setItem("selectedProduct",id)
+    localStorage.setItem("selectedProductid",spID)
+    location.href = "product-info.html";
+}
+
+
+
+
 
 
 
@@ -113,7 +127,7 @@ function limpiar(price2){
     }else{contadorL++}
 
 }}
-
+let arrays = []
 
 
 document.getElementById("sortAsc").addEventListener("click",function(){
@@ -147,13 +161,14 @@ document.getElementById("sortByCount").addEventListener("click",function(){
 /* searcher */
 
 let search = document.getElementById("searchProduct")
-
+var contadorH = 0;
 
 
 
 
 search.addEventListener("input",function(){
-
+    let escriboSearch = search.value
+    console.log(escriboSearch)
     let searchVal =document.getElementById("searchProduct").value;
 
     categoriesArray.products.filter(function(producto, index){
