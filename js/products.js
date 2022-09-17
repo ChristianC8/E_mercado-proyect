@@ -118,6 +118,8 @@ function checkPrice(price){
 
 document.getElementById("clearRangeFilter").addEventListener("click",function clean(){
     categoriesArray.products.forEach(limpiar)
+    document.getElementById("rangeFilterCountMin").value = ""
+    document.getElementById("rangeFilterCountMax").value = " "
 })
 let contadorL = 0;
 function limpiar(price2){
