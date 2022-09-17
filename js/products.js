@@ -94,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
 document.getElementById("rangeFilterCount").addEventListener("click",function(){
+    categoriesArray.products.forEach(limpiar) /* faltaba esta linea de codigo para el filter */
     categoriesArray.products.filter(checkPrice)
 })
 var contadorP = 0;
@@ -115,7 +116,7 @@ function checkPrice(price){
 
 }
 
-document.getElementById("clearRangeFilter").addEventListener("click",function(){
+document.getElementById("clearRangeFilter").addEventListener("click",function clean(){
     categoriesArray.products.forEach(limpiar)
 })
 let contadorL = 0;
@@ -127,6 +128,7 @@ function limpiar(price2){
     }else{contadorL++}
 
 }}
+
 let arrays = []
 
 
