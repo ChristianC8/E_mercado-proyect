@@ -28,7 +28,7 @@ function capturaElJson(url){
 let categoriesArray = [];
 
 
-
+/* var itemArray = [] */
 
 
 function showCategoriesList(array){
@@ -36,9 +36,9 @@ function showCategoriesList(array){
 
     for(let i = 0; i < array.length; i++){ 
         let category = array[i];
-
+console.log(array)
         htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action" id="item`+i+`">
+        <div class="list-group-item list-group-item-action" id="item`+i+`" onclick="saveDato(`+i+`,`+array[i].id+`)">
             <div class="row">
                 <div class="col-3">
                     <img src="` + category.image + `" alt="product image" class="img-thumbnail">
@@ -57,8 +57,22 @@ function showCategoriesList(array){
         </div>
         `
         document.getElementById("cat-list-container").innerHTML = htmlContentToAppend; 
+
+
+
     }
 }
+
+
+function saveDato(id,spID){
+    localStorage.setItem("selectedProduct",id)
+    localStorage.setItem("selectedProductid",spID)
+    location.href = "product-info.html";
+}
+
+
+
+
 
 
 
@@ -80,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
 document.getElementById("rangeFilterCount").addEventListener("click",function(){
+    categoriesArray.products.forEach(limpiar) /* faltaba esta linea de codigo para el filter */
     categoriesArray.products.filter(checkPrice)
 })
 var contadorP = 0;
@@ -101,8 +116,11 @@ function checkPrice(price){
 
 }
 
-document.getElementById("clearRangeFilter").addEventListener("click",function(){
+document.getElementById("clearRangeFilter").addEventListener("click",function clean(){
     categoriesArray.products.forEach(limpiar)
+    document.getElementById("rangeFilterCountMin").value = ""
+    document.getElementById("rangeFilterCountMax").value = " "
+
 })
 let contadorL = 0;
 function limpiar(price2){
@@ -111,8 +129,10 @@ function limpiar(price2){
     if (contadorL == categoriesArray.products.length -1){
         contadorL = 0
     }else{contadorL++}
+    
 
 }}
+
 let arrays = []
 
 
