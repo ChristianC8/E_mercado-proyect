@@ -65,7 +65,7 @@ console.log(array)
 
 
 function saveDato(id,spID){
-    localStorage.setItem("selectedProduct",id)
+/*     localStorage.setItem("selectedProduct",id) */
     localStorage.setItem("selectedProductid",spID)
     location.href = "product-info.html";
 }

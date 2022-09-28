@@ -1,4 +1,4 @@
-const LIST_URL = `https://japceibal.github.io/emercado-api/cats_products/`+JSON.parse(localStorage.getItem("catID"))+`.json`;
+/* const LIST_URL = `https://japceibal.github.io/emercado-api/cats_products/`+JSON.parse(localStorage.getItem("catID"))+`.json`; */
 
 const Comment_URL = `https://japceibal.github.io/emercado-api/products_comments/`+JSON.parse(localStorage.getItem("selectedProductid"))+`.json`
 const Product_Info_URL = `https://japceibal.github.io/emercado-api/products/`+JSON.parse(localStorage.getItem("selectedProductid"))+`.json`
@@ -36,14 +36,14 @@ let categoriesArray = [];
 
 function showProductInfo(array){
     let htmlContentToAppend = "";
-
+console.log(array)
         htmlContentToAppend += `
-        <p id="tituloProducto">${array[localStorage.getItem("selectedProduct")].name}</p>
+        <p id="tituloProducto">${array.name}</p>
         <hr>
-        <p><strong>Precio</strong> <br> ${array[localStorage.getItem("selectedProduct")].currency} ${array[localStorage.getItem("selectedProduct")].cost}</p>
-        <p><strong>Descripción</strong><br>${array[localStorage.getItem("selectedProduct")].description}</p>
-        <p><strong>Categoría</strong><br>${categoriesArray.catName}</p>
-        <p><strong>Cantidad de vendidos</strong><br>${array[localStorage.getItem("selectedProduct")].soldCount}</p>
+        <p><strong>Precio</strong> <br> ${array.currency} ${array.cost}</p>
+        <p><strong>Descripción</strong><br>${array.description}</p>
+        <p><strong>Categoría</strong><br>${array.category}</p>
+        <p><strong>Cantidad de vendidos</strong><br>${array.soldCount}</p>
         <p><strong>Imágenes ilustrativas</strong></p>
 
 
@@ -52,16 +52,16 @@ function showProductInfo(array){
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" style="width: 70%;  padding-left: 10%;">
         <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="img/prod${array[localStorage.getItem("selectedProduct")].id }_1.jpg" class="d-block w-100" alt="...">
+            <img src="img/prod${array.id }_1.jpg" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="img/prod${array[localStorage.getItem("selectedProduct")].id }_2.jpg" class="d-block w-100" alt="...">
+            <img src="img/prod${array.id }_2.jpg" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="img/prod${array[localStorage.getItem("selectedProduct")].id }_3.jpg" class="d-block w-100" alt="...">
+            <img src="img/prod${array.id }_3.jpg" class="d-block w-100" alt="...">
           </div>
           <div class="carousel-item">
-            <img src="img/prod${array[localStorage.getItem("selectedProduct")].id }_4.jpg" class="d-block w-100" alt="...">
+            <img src="img/prod${array.id }_4.jpg" class="d-block w-100" alt="...">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -82,10 +82,10 @@ function showProductInfo(array){
 
 
         <div id="padreImagenesP">
-        <img src="img/prod${array[localStorage.getItem("selectedProduct")].id }_1.jpg" class="imgProduct" data-bs-target="#carouselExampleControls" data-bs-slide-to="0">
-        <img src="img/prod${array[localStorage.getItem("selectedProduct")].id }_2.jpg" class="imgProduct" data-bs-target="#carouselExampleControls" data-bs-slide-to="1">
-        <img src="img/prod${array[localStorage.getItem("selectedProduct")].id }_3.jpg" class="imgProduct" data-bs-target="#carouselExampleControls" data-bs-slide-to="2">
-        <img src="img/prod${array[localStorage.getItem("selectedProduct")].id }_4.jpg" class="imgProduct" data-bs-target="#carouselExampleControls" data-bs-slide-to="3">
+        <img src="img/prod${array.id }_1.jpg" class="imgProduct" data-bs-target="#carouselExampleControls" data-bs-slide-to="0">
+        <img src="img/prod${array.id }_2.jpg" class="imgProduct" data-bs-target="#carouselExampleControls" data-bs-slide-to="1">
+        <img src="img/prod${array.id }_3.jpg" class="imgProduct" data-bs-target="#carouselExampleControls" data-bs-slide-to="2">
+        <img src="img/prod${array.id }_4.jpg" class="imgProduct" data-bs-target="#carouselExampleControls" data-bs-slide-to="3">
         </div>
 
 
@@ -271,7 +271,7 @@ function productosRel(array){
 
     for(let i = 0; i < array.relatedProducts.length; i++){
         contador++
-    htmlAppendProductosRelacionados += `<div class="card" style="width: 18rem;">
+    htmlAppendProductosRelacionados += `<div class="card" style="width: 18rem;"  onclick="actualizarPagina(${contador})">
     <img src="${array.relatedProducts[contador].image}" class="card-img-top " alt="...">
     <div class="card-body">
     <h5 class="card-title">${array.relatedProducts[contador].name}</h5>
@@ -283,7 +283,12 @@ function productosRel(array){
     
 }
 
-
+function actualizarPagina(id){
+    console.log(categoriesArrayProducts.relatedProducts[id])
+ /*   localStorage.setItem("catID",categoriesArrayProducts.relatedProducts[id].id)  */
+   localStorage.setItem("selectedProductid",categoriesArrayProducts.relatedProducts[id].id) 
+    location.href = "product-info.html";
+}
 
 
 
@@ -300,12 +305,12 @@ function productosRel(array){
 
 
 document.addEventListener("DOMContentLoaded", function(){
-    capturaElJson(LIST_URL).then(function(resultObj){
+    capturaElJson(Product_Info_URL).then(function(resultObj){
         if (resultObj.status === "ok")
         {
 
             categoriesArray = resultObj.data;
-            showProductInfo(categoriesArray.products);
+            showProductInfo(categoriesArray);
         }
     });
     capturaElJson(Comment_URL).then(function(resultObj){
