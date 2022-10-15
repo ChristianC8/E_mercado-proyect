@@ -29,7 +29,16 @@ function capturaElJson(url){
 }
 
 
-
+function comprar(){
+    if(localStorage.getItem("alCarrito")){
+        var arrCarrito = [localStorage.getItem("alCarrito")]
+    }else{
+        var arrCarrito = []
+    }
+    arrCarrito.push(localStorage.getItem("selectedProductid"))
+    localStorage.setItem("alCarrito",arrCarrito)
+    location.href = "cart.html";
+}
 
 let categoriesArray = [];
 
@@ -38,7 +47,7 @@ function showProductInfo(array){
     let htmlContentToAppend = "";
 console.log(array)
         htmlContentToAppend += `
-        <p id="tituloProducto">${array.name}</p>
+        <div style="display:flex;justify-content: space-between;"> <p id="tituloProducto">${array.name}</p>  <button type="button" class="btn btn-success" style="height:10%;margin-top:4%;" onclick="comprar()">Comprar</button> </div>
         <hr>
         <p><strong>Precio</strong> <br> ${array.currency} ${array.cost}</p>
         <p><strong>Descripción</strong><br>${array.description}</p>

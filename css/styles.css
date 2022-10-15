@@ -250,3 +250,16 @@ div#contenedorProductosRel{
   flex-direction: row;
 }
 
+
+
+/* cart */
+
+#categoriasCard{
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+.tituloCarrito{
+  text-align: center;
+  margin-top: 1%;
+}

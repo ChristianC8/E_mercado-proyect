@@ -49,9 +49,83 @@
   </nav>
   <main>
     <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
+    
+      <h2 class="mb-5 tituloCarrito">Carrito de compras</h2>
+      <h5 class="mb-3">Articulos a comprar</h5>
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Costo</th>
+              <th scope="col">Cantidad</th>
+              <th scope="col">Subtotal</th>
+            </tr>
+          </thead>
+          <tbody id="cartObjs">
+         <!--    <tr>
+              <th scope="row"><img src="img/cat102_1.jpg" alt="" style="width: 50px;height: 30px;"></th>
+              <td>empty</td>
+              <td>empty</td>
+              <td><div style="width: 60px;"><input type="number"  name="subtotal" id="subtotal" required="" value="1" min="0" class = "form-control" onchange="dibujarCarrito()"></div></td>
+              <td>empty</td>
+            </tr> -->
+          </tbody>
+        </table>
+        <h5 class="mb-3">Tipo de envio</h5>
+        <div class="d-block my-3">
+          <div class="custom-control custom-radio">
+            <input id="Premiumradio" name="publicationType" type="radio" class="custom-control-input" checked="" required="">
+            <label class="custom-control-label" for="Premiumradio">Premium 2 a 5 dias(15%)</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input id="Expressradio" name="publicationType" type="radio" class="custom-control-input" required="">
+            <label class="custom-control-label" for="Expressradio">Express 5 a 8 dias(7%)</label>
+          </div>
+          <div class="custom-control custom-radio">
+            <input id="standardradio" name="publicationType" type="radio" class="custom-control-input" required="">
+            <label class="custom-control-label" for="standardradio">Standard 12 a 15 dias(5%)</label>
+          </div>
+        </div>
+
+
+
+
+
+
+
+      <h5 class="mb-3">Dirección de envio</h5>
+
+      <div class="row">
+
+      <div class="col-md-5 mb-3">
+      <label for="calle">Calle</label>
+      <input type="text" class="form-control" id="calle" value="" name="calle" >
       </div>
+
+      <div class="col-md-3 mb-3">
+      <label for="numero">Numero</label>
+      <input type="text" class="form-control" id="numero" value="" name="numero" >
+      </div>
+
+      </div>
+
+      <div class="col-md-5 mb-3">
+      <label for="Esquina">Esquina</label>
+      <input type="text" class="form-control" id="Esquina" value="" name="Esquina" >
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
   </main>
   <footer class="text-muted">
