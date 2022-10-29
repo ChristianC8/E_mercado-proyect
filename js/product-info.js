@@ -30,6 +30,23 @@ function capturaElJson(url){
 
 
 function comprar(){
+
+    console.log(JSON.stringify(localStorage.getItem("selectedProductid")))
+    let compruebo = []
+    if(localStorage.getItem("alCarrito")){
+    compruebo = localStorage.getItem("alCarrito")}
+
+
+    if(compruebo.indexOf(localStorage.getItem("selectedProductid")) != -1){
+        console.log("ya esta agregado")
+
+        document.getElementById("irCarrito").classList.remove("d-none")
+        setTimeout(()=>{ document.getElementById("irCarrito").classList.add("d-none")}, 4400)
+
+
+
+        console.log(compruebo.indexOf(JSON.stringify(localStorage.getItem("selectedProductid"))))
+    }else{
     if(localStorage.getItem("alCarrito")){
         var arrCarrito = [localStorage.getItem("alCarrito")]
     }else{
@@ -38,7 +55,8 @@ function comprar(){
     arrCarrito.push(localStorage.getItem("selectedProductid"))
     localStorage.setItem("alCarrito",arrCarrito)
     location.href = "cart.html";
-}
+}}
+
 
 let categoriesArray = [];
 
