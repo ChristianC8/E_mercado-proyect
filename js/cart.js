@@ -186,7 +186,7 @@ let NumeroCostosS = document.getElementById("totalSubtotal");
 let CostoDeEnvio = document.getElementById("subtotalPorcentaje")
 let totalCostos = document.getElementById("total")
 
-setTimeout(PaginaCargada, 100);
+setTimeout(PaginaCargada, 150);
 
 function PaginaCargada(){
 
@@ -194,7 +194,6 @@ function PaginaCargada(){
 for(let i = 1;i < arrayUnicos.length + 1 ; i++ ){
     if(document.getElementById(`Psubtotal${i}`)){
 
-  
         if(document.getElementById(`Pcurrency${i}`).innerHTML === "UYU"){
             sumaSubtotales += parseInt(document.getElementById(`Psubtotal${i}`).innerHTML) / 41,02
         }else{
@@ -204,7 +203,7 @@ for(let i = 1;i < arrayUnicos.length + 1 ; i++ ){
     }
     NumeroCostosS.innerHTML= parseInt(sumaSubtotales)
     actualizarCostoEnvio(0.15)
-    totalCostos.innerHTML = parseInt(NumeroCostosS.innerHTML) + parseInt(CostoDeEnvio.innerHTML)
+    /* totalCostos.innerHTML = parseInt(NumeroCostosS.innerHTML) + parseInt(CostoDeEnvio.innerHTML) */
 }
 }
 
