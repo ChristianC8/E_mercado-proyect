@@ -292,3 +292,22 @@ div#contenedorProductosRel{
 #formaDePagoSet{
   margin-top: 10px;
 }
+
+/* perfil */
+.perfilPic{
+  width: 100px;
+  height: 100px;
+  float: right;
+  margin-top: 10px;
+  margin-right: 100px;
+  border: rgb(195, 195, 195);
+  border-style: solid;
+}
+.topPerfil{
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10%;
+}
+.tituloPerfil{
+  margin-top: 20px;
+}
