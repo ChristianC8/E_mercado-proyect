@@ -28,7 +28,8 @@ guardar.addEventListener("click", () => {
     localStorage.setItem("segApell", SegApellido.value);
     localStorage.setItem("userId", email.value);
     localStorage.setItem("telefono", telNum.value);
-    localStorage.setItem("imagenGuardada",localStorage.getItem("imagenIntercambiable"))
+    if(imagen.value){
+    localStorage.setItem("imagenGuardada",localStorage.getItem("imagenIntercambiable"))}
     location.reload();
 
 
